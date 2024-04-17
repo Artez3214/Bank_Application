@@ -50,6 +50,10 @@ const  InitialLaayout = () => {
     headerShadowVisible: false,
     headerStyle:{ backgroundColor: Colors.background}
   }}/>
+    <Stack.Screen name = "login" options={{headerShown: false,
+    headerShadowVisible: false,
+    headerStyle:{ backgroundColor: Colors.background}
+  }}/>
 </Stack>);
 };
 
