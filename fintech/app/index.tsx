@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start', // Align video to the top
     alignItems: 'center',
-    backgroundColor: '#011627', // Set background color to black
+    backgroundColor: '#030304', // Set background color to black
   },
   video: {
     width: '100%',
