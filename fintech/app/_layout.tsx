@@ -3,7 +3,28 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import {ClerkProvider, useAuth} from "@clerk/clerk-expo"
+const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+import * as SecureStore from 'expo-secure-store';
+// Cache the Clerk JWT
+const tokenCache = {
+  async getToken(key: string) {
+    try {
+      return SecureStore.getItemAsync(key);
+    } catch (err) {
+      return null;
+    }
+  },
+  async saveToken(key: string, value: string) {
+    try {
+      return SecureStore.setItemAsync(key, value);
+    } catch (err) {
+      return;
+    }
+  },
+};
+
 
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
@@ -27,18 +48,17 @@ const  InitialLaayout = () => {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
+  const {isLoaded, isSignedIn} = useAuth();
 
-  const routeris = useRouter();
+  const router= useRouter();
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
   }, [error]);
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+      console.log('isSignedIn', isSignedIn);
+  }, [isSignedIn]);
 
   if (!loaded) {
     return null;
@@ -54,11 +74,20 @@ const  InitialLaayout = () => {
     headerShadowVisible: false,
     headerStyle:{ backgroundColor: Colors.background}
   }}/>
+   <Stack.Screen name = "verification/[phone]" options={{headerShown: false,
+    headerShadowVisible: false,
+    headerStyle:{ backgroundColor: Colors.background}
+  }}/>
 </Stack>);
 };
 
 const RootLayoutNav = () =>{
-  return <InitialLaayout/>;
+  
+  return (
+    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
+    <InitialLaayout/>
+    </ClerkProvider>
+  );
 }
 
 export default RootLayoutNav;

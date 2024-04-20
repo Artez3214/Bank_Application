@@ -6,5 +6,5 @@ export default {
   gray: '#626D77',
   lightGray: '#D8DCE2',
   green: '#2ec4b6',
-  PrimaryText: '#fdfffc',
+  PrimaryText: '#2ec4b6',
 };

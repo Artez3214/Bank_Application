@@ -1,7 +1,8 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
+import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
-import { Link, useRouter } from 'expo-router';
+import { Link, router, useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
   View, Text,
@@ -10,6 +11,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 
 enum SignInType {
@@ -22,13 +24,39 @@ const Page = () => {
   const [countryCode, setCountryCode] = useState('+370');
   const [phoneNumber, setPhoneNumber] = useState('');
   const keyboardVerticalOffset = Platform.OS === 'android' ? 70 : 0;
+  const { signIn } = useSignIn();
+  const onSignIn = async (type: SignInType) => {
+    if (type === SignInType.Phone) {
+      try {
+        const fullPhoneNumber = `${countryCode}${phoneNumber}`;
 
-  const onSignin = async (type: SignInType) => {
+        const { supportedFirstFactors } = await signIn!.create({
+          identifier: fullPhoneNumber,
+        });
+        const firstPhoneFactor: any = supportedFirstFactors.find((factor: any) => {
+          return factor.strategy === 'phone_code';
+        });
 
-    if(type === SignInType.Phone)  {
+        const { phoneNumberId } = firstPhoneFactor;
 
+        await signIn!.prepareFirstFactor({
+          strategy: 'phone_code',
+          phoneNumberId,
+        });
+
+        router.push({
+          pathname: '/verification/[phone]',
+          params: { phone: fullPhoneNumber, signin: 'true' },
+        });
+      } catch (err) {
+        console.log('error', JSON.stringify(err, null, 2));
+        if (isClerkAPIResponseError(err)) {
+          if (err.errors[0].code === 'form_identifier_not_found') {
+            Alert.alert('Error', err.errors[0].message);
+          }
+        }
+      }
     }
-
   };
 
   return (
@@ -65,7 +93,7 @@ const Page = () => {
           phoneNumber !== '' ? styles.enabled : styles.disabled,
           { marginBottom: 20, alignSelf: 'center', width: '80%' }
         ]}
-          onPress={() => onSignin(SignInType.Phone)}>
+          onPress={() => onSignIn(SignInType.Phone)}>
           <Text style={[defaultStyles.buttonText, { marginTop: 0 }]}>Continue</Text>
         </TouchableOpacity>
 
@@ -76,7 +104,7 @@ const Page = () => {
         </View>
 
         <TouchableOpacity 
-        onPress={() => onSignin(SignInType.Email)}
+        onPress={() => onSignIn(SignInType.Email)}
         style={[
           defaultStyles.pillButton,
           { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
@@ -86,7 +114,7 @@ const Page = () => {
         </TouchableOpacity>
 
         <TouchableOpacity 
-        onPress={() => onSignin(SignInType.Google)}
+        onPress={() => onSignIn(SignInType.Google)}
         style={[
           defaultStyles.pillButton,
           { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: '#e71d36', alignSelf: 'center', width: '80%' }
@@ -114,6 +142,34 @@ const styles = StyleSheet.create({
   },
   disabled: {
     backgroundColor: Colors.primaryMuted,
+  },
+  codeFieldRoot: {
+    marginVertical: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    gap: 12,
+  },
+  cellRoot: {
+    width: 45,
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.lightGray,
+    borderRadius: 8,
+  },
+  cellText: {
+    color: '#000',
+    fontSize: 36,
+    textAlign: 'center',
+  },
+  focusCell: {
+    paddingBottom: 8,
+  },
+  separator: {
+    height: 2,
+    width: 10,
+    backgroundColor: Colors.gray,
+    alignSelf: 'center',
   },
 });
 
