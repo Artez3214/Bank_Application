@@ -10,7 +10,8 @@ export const defaultStyles = StyleSheet.create({
   header: {
     fontSize: 40,
     fontWeight: '700',
-    backgroundColor: Colors.PrimaryText
+    backgroundColor: Colors.background,
+    color:  '#2ec4b6'
   },
   pillButton: {
     backgroundColor: '#2ec4b6',

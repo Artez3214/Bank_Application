@@ -1,12 +1,13 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack, useRouter } from 'expo-router';
+import { isLoaded, useFonts } from 'expo-font';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
-import {ClerkProvider, useAuth} from "@clerk/clerk-expo"
+import { ClerkProvider, useAuth } from "@clerk/clerk-expo"
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 import * as SecureStore from 'expo-secure-store';
+import { Text } from 'react-native';
 // Cache the Clerk JWT
 const tokenCache = {
   async getToken(key: string) {
@@ -42,50 +43,69 @@ export const unstable_settings = {
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-const  InitialLaayout = () => {
+const InitialLaayout = () => {
 
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
-  const {isLoaded, isSignedIn} = useAuth();
+  const { isLoaded, isSignedIn } = useAuth();
 
-  const router= useRouter();
+  const router = useRouter();
+  const segments = useSegments();
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
   }, [error]);
 
   useEffect(() => {
-      console.log('isSignedIn', isSignedIn);
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+  useEffect(() => {
+    console.log('isSignedIn', isSignedIn);
+    if (!isLoaded) return;
+
+    const inAuthGroup = segments[0] === '(aauthenticated)';
+
+    if (isSignedIn && !inAuthGroup) {
+      router.replace('/authentication/(tabs)/home');
+    } else if (!isSignedIn) {
+      router.replace('/');
+    }
   }, [isSignedIn]);
 
-  if (!loaded) {
-    return null;
+  if (!loaded || !isLoaded) {
+    return <Text>Loading.....</Text>;
   }
 
-  return     (<Stack>
-  <Stack.Screen name = "index" options={{headerShown: false}}/>
-  <Stack.Screen name = "signup" options={{headerShown: false,
-    headerShadowVisible: false,
-    headerStyle:{ backgroundColor: Colors.background}
-  }}/>
-    <Stack.Screen name = "login" options={{headerShown: false,
-    headerShadowVisible: false,
-    headerStyle:{ backgroundColor: Colors.background}
-  }}/>
-   <Stack.Screen name = "verification/[phone]" options={{headerShown: false,
-    headerShadowVisible: false,
-    headerStyle:{ backgroundColor: Colors.background}
-  }}/>
-</Stack>);
+  return (<Stack>
+    <Stack.Screen name="index" options={{ headerShown: false }} />
+    <Stack.Screen name="signup" options={{
+      headerShown: false,
+      headerShadowVisible: false,
+      headerStyle: { backgroundColor: Colors.background }
+    }} />
+    <Stack.Screen name="login" options={{
+      headerShown: false,
+      headerShadowVisible: false,
+      headerStyle: { backgroundColor: Colors.background }
+    }} />
+    <Stack.Screen name="verification/[phone]" options={{
+      headerShown: false,
+      headerShadowVisible: false,
+      headerStyle: { backgroundColor: Colors.background }
+    }} />
+    <Stack.Screen name="authentication/(tabs)" options={{headerShown:false}}/>
+  </Stack>);
 };
 
-const RootLayoutNav = () =>{
-  
+const RootLayoutNav = () => {
+
   return (
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
-    <InitialLaayout/>
+      <InitialLaayout />
     </ClerkProvider>
   );
 }

@@ -64,8 +64,8 @@ const Page = () => {
         }
       };
     return (
-        <View style={defaultStyles.container}>
-          <Text style={defaultStyles.header}>6-digit code</Text>
+        <View style={[defaultStyles.container, { backgroundColor: Colors.background }]}>
+          <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10, marginTop: 50 }]}>6-digit code</Text>
           <Text style={defaultStyles.descriptionText}>
             Code sent to {phone} unless you already have an account
           </Text>
@@ -87,14 +87,16 @@ const Page = () => {
                     {symbol || (isFocused ? <Cursor /> : null)}
                   </Text>
                 </View>
-                {/* Removed the separator for a cleaner design */}
+                {}
               </Fragment>
             )}
           />
     
-          <TouchableOpacity onPress={() => {/* Define your navigation logic here */}}>
-            <Text style={defaultStyles.textLink}>Already have an account? Log in</Text>
-          </TouchableOpacity>
+    <Link href={'/login'} replace asChild>
+        <TouchableOpacity>
+          <Text style={[defaultStyles.textLink]}>Already have an account? Log in</Text>
+        </TouchableOpacity>
+      </Link>
         </View>
       );
     };
