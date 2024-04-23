@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo"
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 import * as SecureStore from 'expo-secure-store';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 // Cache the Clerk JWT
 const tokenCache = {
   async getToken(key: string) {
@@ -27,8 +27,10 @@ const tokenCache = {
 };
 
 
+
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
+import { Ionicons } from '@expo/vector-icons';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -51,6 +53,8 @@ const InitialLaayout = () => {
   });
   const { isLoaded, isSignedIn } = useAuth();
 
+
+
   const router = useRouter();
   const segments = useSegments();
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -67,14 +71,14 @@ const InitialLaayout = () => {
     console.log('isSignedIn', isSignedIn);
     if (!isLoaded) return;
 
-    const inAuthGroup = segments[0] === '(aauthenticated)';
+    const inAuthGroup = segments[0] === '(authentication)';
 
     if (isSignedIn && !inAuthGroup) {
       router.replace('/authentication/(tabs)/home');
     } else if (!isSignedIn) {
       router.replace('/');
     }
-  }, [isSignedIn]);
+  }, [isSignedIn]); 
 
   if (!loaded || !isLoaded) {
     return <Text>Loading.....</Text>;
@@ -95,7 +99,12 @@ const InitialLaayout = () => {
     <Stack.Screen name="verification/[phone]" options={{
       headerShown: false,
       headerShadowVisible: false,
-      headerStyle: { backgroundColor: Colors.background }
+      headerStyle: { backgroundColor: Colors.background },
+      headerLeft: () => (
+        <TouchableOpacity onPress={router.back}>
+          <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+        </TouchableOpacity>
+      ),
     }} />
     <Stack.Screen name="authentication/(tabs)" options={{headerShown:false}}/>
   </Stack>);

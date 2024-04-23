@@ -72,6 +72,7 @@ const Page = () => {
         <Text style={defaultStyles.descriptionText}>
           Please provide your phone number. We'll send a confirmation code to verify it.
         </Text>
+        
         <View style={styles.inputContainer}>
           <TextInput
             style={[styles.input, { backgroundColor: '#fdfffc', color: Colors.gray, flex: 0.2, marginRight: 10 }]}

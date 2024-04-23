@@ -64,11 +64,6 @@ const Page = () => {
             onChangeText={setPhoneNumber}
           />
         </View>
-        <Link href={'/login'} replace asChild>
-          <TouchableOpacity>
-            <Text style={defaultStyles.textLink}>Have an existing account? Sign in.</Text>
-          </TouchableOpacity>
-        </Link>
         <View style={{ flex: 1 }} />
         <TouchableOpacity
           style={[
