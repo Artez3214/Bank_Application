@@ -23,6 +23,16 @@ export const defaultStyles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 40,
   },
+  pillButtonTwo: {
+    backgroundColor: '#2ec4b6',
+    padding: 10,
+    height: 40,
+    borderRadius: 50,
+    width: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+  },
   textLink: {
     color: Colors.primary,
     fontSize: 18,

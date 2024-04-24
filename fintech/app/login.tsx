@@ -1,6 +1,7 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
-import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
+import { SignedIn, isClerkAPIResponseError, useAuth, useSignIn, useUser } from '@clerk/clerk-expo';
+import { clerk } from '@clerk/clerk-expo/dist/singleton';
 import { Ionicons } from '@expo/vector-icons';
 import { Link, router, useRouter } from 'expo-router';
 import { useState } from 'react';
@@ -9,9 +10,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
+  Pressable,
 } from 'react-native';
 
 enum SignInType {
@@ -21,110 +20,77 @@ enum SignInType {
 }
 
 const Page = () => {
-  const [countryCode, setCountryCode] = useState('+370');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const keyboardVerticalOffset = Platform.OS === 'android' ? 70 : 0;
-  const { signIn } = useSignIn();
-  const onSignIn = async (type: SignInType) => {
-    if (type === SignInType.Phone) {
-      try {
-        const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+  const { signIn, setActive, isLoaded,  phoneNumberId } = useSignIn();
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { userId, sessionId, getToken} = useAuth();
 
-        const { supportedFirstFactors } = await signIn!.create({
-          identifier: fullPhoneNumber,
-        });
-        const firstPhoneFactor: any = supportedFirstFactors.find((factor: any) => {
-          return factor.strategy === 'phone_code';
-        });
+  const onSignInPress = async () => {
+    if (!isLoaded) {
+      return;
+    }
+    setLoading(true);
 
-        const { phoneNumberId } = firstPhoneFactor;
-
-        await signIn!.prepareFirstFactor({
-          strategy: 'phone_code',
-          phoneNumberId,
-        });
-
-        router.push({
-          pathname: '/verification/[phone]',
-          params: { phone: fullPhoneNumber, signin: 'true' },
-        });
-      } catch (err) {
-        console.log('error', JSON.stringify(err, null, 2));
-        if (isClerkAPIResponseError(err)) {
-          if (err.errors[0].code === 'form_identifier_not_found') {
-            Alert.alert('Error', err.errors[0].message);
-          }
-        }
-      }
+    try {
+        const completeSignIn = await signIn.create({
+        identifier: emailAddress,
+        password,
+      });
+        await completeSignIn.prepareFirstFactor({
+            phoneNumberId: '+37067928398',
+            strategy: 'phone_code',
+        })
+      // Get the primary phone number if available
+     // let number = user?.primaryPhoneNumber;
+      
+      // Proceed with further authentication steps...
+      //router.push({ pathname: '/phoneNumberLogin'});
+      //router.push({ pathname: '/phoneNumberLogin'});
+    } catch (err: any) {
+      alert(err.errors[0].message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      keyboardVerticalOffset={keyboardVerticalOffset}
+    <View style={[styles.container, {backgroundColor: Colors.background}]}>
+      <TextInput
+        autoCapitalize="none"
+        placeholder="simon@galaxies.dev"
+        value={emailAddress}
+        onChangeText={setEmailAddress}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={[styles.input, {marginTop: 30}]}
+      />
 
-      >
-      <View style={[defaultStyles.container, { backgroundColor: Colors.background }]}>
-        <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10, marginTop: 50 }]}>
-          Welcome back!
-        </Text>
-        <Text style={defaultStyles.descriptionText}>
-          Please provide your phone number. We'll send a confirmation code to verify it.
-        </Text>
-        
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={[styles.input, { backgroundColor: '#fdfffc', color: Colors.gray, flex: 0.2, marginRight: 10 }]}
-            placeholder="Country code"
-            placeholderTextColor={Colors.gray}
-            value={countryCode}
-          />
-          <TextInput
-            style={[styles.input, { flex: 0.8, backgroundColor: '#fdfffc', color: Colors.gray }]}
-            placeholder="Mobile number"
-            keyboardType="numeric"
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
-          />
-        </View>
-    
-        <TouchableOpacity style={[
-          defaultStyles.pillButton,
-          phoneNumber !== '' ? styles.enabled : styles.disabled,
-          { marginBottom: 20, alignSelf: 'center', width: '80%' }
-        ]}
-          onPress={() => onSignIn(SignInType.Phone)}>
-          <Text style={[defaultStyles.buttonText, { marginTop: 0 }]}>Continue</Text>
-        </TouchableOpacity>
-
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 20 }}>
-          <View style={{ flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: Colors.lightGray }}></View>
-          <Text style={{ color: Colors.gray, fontSize: 20 }}>or</Text>
-          <View style={{ flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: Colors.lightGray }}></View>
-        </View>
-
-        <TouchableOpacity 
-        onPress={() => onSignIn(SignInType.Email)}
+      <TouchableOpacity 
+        onPress={onSignInPress}
         style={[
           defaultStyles.pillButton,
           { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
         ]}>
-          <Ionicons name="mail" size={24} color={'#fff'} />
-          <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue with email</Text>
-        </TouchableOpacity>
+        <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity 
-        onPress={() => onSignIn(SignInType.Google)}
-        style={[
-          defaultStyles.pillButton,
-          { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: '#e71d36', alignSelf: 'center', width: '80%' }
-        ]}>
-          <Ionicons name="logo-google" size={24} color={'#fff'} />
-          <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue with google</Text>
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+      <Link href="/reset" asChild>
+        <Pressable style={styles.button}>
+          <Text style={[{color: '#fdfffc'}]}>Forgot password?</Text>
+        </Pressable>
+      </Link>
+      <Link href="/signup" asChild>
+        <Pressable style={styles.button}>
+          <Text style={[{color: '#fdfffc'}]}>Create Account</Text>
+        </Pressable>
+      </Link>
+    </View>
   );
 };
 
@@ -137,26 +103,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 16,
     fontSize: 20,
-  },
-  enabled: {
-    backgroundColor: Colors.primary,
-  },
-  disabled: {
-    backgroundColor: Colors.primaryMuted,
-  },
-  codeFieldRoot: {
-    marginVertical: 20,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    gap: 12,
-  },
-  cellRoot: {
-    width: 45,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.lightGray,
-    borderRadius: 8,
+    backgroundColor: '#fdfffc',
   },
   cellText: {
     color: '#000',
@@ -171,6 +118,16 @@ const styles = StyleSheet.create({
     width: 10,
     backgroundColor: Colors.gray,
     alignSelf: 'center',
+  },
+  button: {
+    margin: 15,
+    marginTop: 20,
+    alignItems: 'center'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20
   },
 });
 

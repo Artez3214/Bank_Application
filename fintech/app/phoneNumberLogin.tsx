@@ -1,6 +1,7 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
-import { useSignUp } from '@clerk/clerk-expo';
+import { SignedIn, useSignUp, useUser } from '@clerk/clerk-expo';
+import { clerk } from '@clerk/clerk-expo/dist/singleton';
 import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
@@ -19,16 +20,17 @@ const Page = () => {
   const router = useRouter();
   const {signUp}  = useSignUp();
 
+
   const onSignup = async () => {
     const fullPhoneNumber = `${countryCode}${phoneNumber}`;
 
     try {
-      await signUp!.create({
+      await signUp!.update({
         phoneNumber: fullPhoneNumber,
       });
       signUp!.preparePhoneNumberVerification();
 
-      router.push({ pathname: '/verification/[phone]', params: { phone: fullPhoneNumber } });
+      router.push({ pathname: '/verificationPhone/[phone]', params: { phone: fullPhoneNumber } });
     } catch (error) {
       console.error('Error signing up:', error);
     }
@@ -47,7 +49,7 @@ const Page = () => {
           How about we begin?
         </Text>
         <Text style={defaultStyles.descriptionText}>
-          Please provide your phone number. We'll send a confirmation code to verify it.
+          Please provide your phone number. We'll send a confirmation  code to verify it .
         </Text>
         <View style={styles.inputContainer}>
           <TextInput

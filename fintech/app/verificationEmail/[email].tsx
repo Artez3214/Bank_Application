@@ -1,7 +1,7 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
-import { isClerkAPIResponseError, useSignIn, useSignUp } from '@clerk/clerk-expo';
-import { Link, useLocalSearchParams } from 'expo-router';
+import { isClerkAPIResponseError, useSignIn, useSignUp, useUser } from '@clerk/clerk-expo';
+import { Link, router, useLocalSearchParams } from 'expo-router';
 import { Fragment, useEffect, useState } from 'react';
 import { Alert, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import {
@@ -13,11 +13,16 @@ import {
   const CELL_COUNT = 6;
 
 const Page = () => {
-  const { phone, signin } = useLocalSearchParams<{ phone: string; signin: string }>();
+  const { email, signin } = useLocalSearchParams<{ email: string; signin: string }>();
   const [code, setCode] = useState('');
   const { signIn } = useSignIn();
   const { signUp, setActive } = useSignUp();
+  const { user } = useUser();
 
+  let phoneNumber = '';
+if (user && user.phoneNumbers.length > 0) {
+  phoneNumber = user.phoneNumbers[0].phoneNumber;
+}
   const ref = useBlurOnFulfill({ value: code, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value: code,
@@ -33,13 +38,14 @@ const Page = () => {
         }
       }
     }, [code]);
-  
+
     const verifyCode = async () => {
       try {
-        await signUp!.attemptPhoneNumberVerification({
+        await signUp!.attemptEmailAddressVerification({
           code,
         });
-        await setActive!({ session: signUp!.createdSessionId });
+        router.push({ pathname: '/phoneNumberLogin'});
+        //await setActive!({ session: signUp!.createdSessionId });
       } catch (err) {
         console.log('error', JSON.stringify(err, null, 2));
         if (isClerkAPIResponseError(err)) {
@@ -50,11 +56,11 @@ const Page = () => {
   
     const verifySignIn = async () => {
       try {
-        await signIn!.attemptFirstFactor({
-          strategy: 'phone_code',
-          code,
+        await signIn!.prepareSecondFactor({
+          strategy: "phone_code",
         });
-        await setActive!({ session: signIn!.createdSessionId });
+       // await setActive!({ session: signIn!.createdSessionId });
+       router.push({ pathname: '/verificationPhone/[phone]', params: { phone: phoneNumber }});
       } catch (err) {
         console.log('error', JSON.stringify(err, null, 2));
         if (isClerkAPIResponseError(err)) {
@@ -66,7 +72,7 @@ const Page = () => {
         <View style={[defaultStyles.container, { backgroundColor: Colors.background }]}>
           <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10, marginTop: 50 }]}>6-digit code</Text>
           <Text style={defaultStyles.descriptionText}>
-            Code sent to {phone} unless you already have an account
+            Code sent to {email} unless you already have an account
           </Text>
     
           <CodeField

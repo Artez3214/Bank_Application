@@ -1,8 +1,10 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { useSignUp } from '@clerk/clerk-expo';
-import { Link, useRouter } from 'expo-router';
-import { useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { isLoaded } from 'expo-font';
+import { Link, Stack, useRouter } from 'expo-router';
+import React, { useState } from 'react';
 import {
   View, Text,
   StyleSheet,
@@ -10,89 +12,112 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Button,
+  Pressable,
 } from 'react-native';
 
 const Page = () => {
-  const [countryCode, setCountryCode] = useState('+370');
-  const [phoneNumber, setPhoneNumber] = useState('');
+
   const keyboardVerticalOffset = Platform.OS === 'android' ? 70 : 0;
   const router = useRouter();
-  const {signUp}  = useSignUp();
+  const { isLoaded, signUp, setActive } = useSignUp();
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+  const [pendingVerification, setPendingVerification] = useState(false);
+  const [code, setCode] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const onSignup = async () => {
-    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+  const onSignUpPress = async () => {
+    if (!isLoaded) {
+      return;
+    }
+    setLoading(true);
 
     try {
-      await signUp!.create({
-        phoneNumber: fullPhoneNumber,
+      // Create the user on Clerk
+      await signUp.create({
+        emailAddress,
+        password,
       });
-      signUp!.preparePhoneNumberVerification();
 
-      router.push({ pathname: '/verification/[phone]', params: { phone: fullPhoneNumber } });
-    } catch (error) {
-      console.error('Error signing up:', error);
+      // Send verification Email
+      await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
+      router.push({ pathname: '/verificationEmail/[email]', params: { email: emailAddress } });
+      // change the UI to verify the email address
+      setPendingVerification(true);
+    } catch (err: any) {
+      alert(err.errors[0].message);
+    }finally {
+       setLoading(false);
+    }
+  };
+
+  // Verify the email address
+  const onPressVerify = async () => {
+    if (!isLoaded) {
+      return;
+    }
+    setLoading(true);
+
+    try {
+      const completeSignUp = await signUp.attemptEmailAddressVerification({
+        code,
+      });
+
+   //   await setActive({ session: completeSignUp.createdSessionId });
+    } catch (err: any) {
+      alert(err.errors[0].message);
+    } finally {
+      setLoading(false);
     }
   };
 
 
 
 
+
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      
-      keyboardVerticalOffset={keyboardVerticalOffset}>
-      <View style={[defaultStyles.container, { backgroundColor: Colors.background }]}>
-        <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10, marginTop: 50 }]}>
-          How about we begin?
-        </Text>
-        <Text style={defaultStyles.descriptionText}>
-          Please provide your phone number. We'll send a confirmation code to verify it.
-        </Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={[styles.input, { backgroundColor: '#fdfffc', color: Colors.gray, flex: 0.2, marginRight: 10 }]}
-            placeholder="Country code"
-            placeholderTextColor={Colors.gray}
-            value={countryCode}
-          />
-          <TextInput
-            style={[styles.input, { flex: 0.8, backgroundColor: '#fdfffc', color: Colors.gray }]}
-            placeholder="Mobile number"
-            keyboardType="numeric"
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
-          />
-        </View>
-        <Link href={'/login'} replace asChild>
-          <TouchableOpacity>
-            <Text style={defaultStyles.textLink}>Have an existing account? Sign in.</Text>
-          </TouchableOpacity>
-        </Link>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity
-          style={[
-            defaultStyles.pillButton,
-            phoneNumber !== '' ? styles.enabled : styles.disabled,
-            { backgroundColor: Colors.green, marginTop: 0, width: '80%', alignSelf: 'center' } // Adjusted width and marginTop
-          ]}
-          onPress={onSignup}>
-          <Text style={[defaultStyles.buttonText, { marginTop: 0 }]}>Sign up</Text>
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+    <View style={[styles.container, {backgroundColor: Colors.background}]}>
+    <TextInput
+        autoCapitalize="none"
+        placeholder="simon@galaxies.dev"
+        value={emailAddress}
+        onChangeText={setEmailAddress}
+style={styles.input}
+    />
+    <TextInput
+        placeholder="password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={[styles.input, {marginTop: 30}]}
+    />
+
+<TouchableOpacity 
+onPress={onSignUpPress}
+style={[
+  defaultStyles.pillButton,
+  { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
+]}>
+  <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue</Text>
+</TouchableOpacity>
+</View>
   );
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    marginVertical: 40,
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
   },
   input: {
     padding: 20,
     borderRadius: 16,
     fontSize: 20,
+    backgroundColor: '#fdfffc',
+    color: Colors.gray,
+    marginBottom: 16,
   },
   enabled: {
     backgroundColor: Colors.primary,
