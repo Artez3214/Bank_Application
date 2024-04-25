@@ -38,7 +38,7 @@ const Page = () => {
         password,
       });
         await completeSignIn.prepareFirstFactor({
-            phoneNumberId: '+37067928398',
+            phoneNumberId: '',
             strategy: 'phone_code',
         })
       // Get the primary phone number if available
