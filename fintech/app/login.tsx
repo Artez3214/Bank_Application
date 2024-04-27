@@ -20,7 +20,7 @@ enum SignInType {
 }
 
 const Page = () => {
-  const { signIn, setActive, isLoaded,  phoneNumberId } = useSignIn();
+  const { signIn, setActive, isLoaded } = useSignIn();
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);

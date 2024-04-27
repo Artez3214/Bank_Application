@@ -4,7 +4,8 @@ export default {
   background: '#030304',
   dark: '#141518',
   gray: '#626D77',
-  lightGray: '#D8DCE2',
+  lightGray: '#fdfffc',
   green: '#2ec4b6',
   PrimaryText: '#2ec4b6',
+  secondGray:'#D8DCE2',
 };
