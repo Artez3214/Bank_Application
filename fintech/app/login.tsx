@@ -24,7 +24,7 @@ const Page = () => {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { userId, sessionId, getToken} = useAuth();
+  const { userId, sessionId, getToken } = useAuth();
 
   const onSignInPress = async () => {
     if (!isLoaded) {
@@ -33,20 +33,30 @@ const Page = () => {
     setLoading(true);
 
     try {
-        const completeSignIn = await signIn.create({
-        identifier: emailAddress,
-        password,
+      const {supportedFirstFactors} = await signIn.create({
+        identifier: emailAddress
       });
-        await completeSignIn.prepareFirstFactor({
-            phoneNumberId: '',
-            strategy: 'phone_code',
-        })
-      // Get the primary phone number if available
-     // let number = user?.primaryPhoneNumber;
-      
-      // Proceed with further authentication steps...
-      //router.push({ pathname: '/phoneNumberLogin'});
-      //router.push({ pathname: '/phoneNumberLogin'});
+
+      console.log('supportedFirstFactors1', supportedFirstFactors);
+      signIn?.validatePassword(password);
+      console.log('supportedFirstFactors123', supportedFirstFactors);
+      const emailAddressFactor: any = supportedFirstFactors.find((factor: any) => {
+        return factor.strategy === 'email_code';
+      });
+      console.log('supportedFirstFactors1234', supportedFirstFactors);
+      const { emailAddressId } = emailAddressFactor;
+console.log('supportedFirstFactors12345', emailAddressId);
+
+      await signIn!.prepareFirstFactor({
+        strategy: 'email_code',
+        emailAddressId: emailAddressId, 
+      });
+      console.log('supportedFirstFactors12', supportedFirstFactors);
+      router.push({
+        pathname: '/verificationEmail/[email]',
+        params: { email: emailAddress, signin: 'true' },
+      });
+
     } catch (err: any) {
       alert(err.errors[0].message);
     } finally {
@@ -55,23 +65,29 @@ const Page = () => {
   };
 
   return (
-    <View style={[styles.container, {backgroundColor: Colors.background}]}>
+    <View style={[styles.container, { backgroundColor: Colors.background }]}>
+       <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10 }]}>
+          Welcome back!
+        </Text>
+        <Text style={defaultStyles.descriptionText}>
+          Please provide your email. We'll send a confirmation code to verify it.
+        </Text>
       <TextInput
         autoCapitalize="none"
-        placeholder="simon@galaxies.dev"
+        placeholder="Your email address"
         value={emailAddress}
         onChangeText={setEmailAddress}
-        style={styles.input}
+        style={[styles.input, { marginTop: 50 }]}
       />
       <TextInput
         placeholder="password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-        style={[styles.input, {marginTop: 30}]}
+        style={[styles.input, { marginTop: 30 }]}
       />
 
-      <TouchableOpacity 
+      <TouchableOpacity
         onPress={onSignInPress}
         style={[
           defaultStyles.pillButton,
@@ -79,15 +95,33 @@ const Page = () => {
         ]}>
         <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue</Text>
       </TouchableOpacity>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 20 }}>
+        <View style={{ flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: Colors.lightGray }}></View>
+        <Text style={{ color: Colors.gray, fontSize: 20 }}>or</Text>
+        <View style={{ flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: Colors.lightGray }}></View>
+      </View>
+
+      <TouchableOpacity
+        onPress={onSignInPress}
+        style={[
+          defaultStyles.pillButton,
+          { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
+        ]}>
+        <Link href="/phoneNumberLogin">
+          <Ionicons name="call-outline" size={20} color={'#fff'} />
+          <Text style={[defaultStyles.buttonText, { color: '#fff', marginBottom: 60 }]}>  Continue with phone</Text>
+        </Link>
+      </TouchableOpacity>
+
 
       <Link href="/reset" asChild>
         <Pressable style={styles.button}>
-          <Text style={[{color: '#fdfffc'}]}>Forgot password?</Text>
+          <Text style={[{ color: '#fdfffc' }]}>Forgot password?</Text>
         </Pressable>
       </Link>
       <Link href="/signup" asChild>
         <Pressable style={styles.button}>
-          <Text style={[{color: '#fdfffc'}]}>Create Account</Text>
+          <Text style={[{ color: '#fdfffc' }]}>Create Account</Text>
         </Pressable>
       </Link>
     </View>

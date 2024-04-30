@@ -4,11 +4,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { BlurView } from 'expo-blur';
-import CustomHeader from '@/components/CustomHeader';
 
-const Layout  = () => {
-    return (
-      <Tabs 
+const Layout = () => {
+  return (
+    <Tabs
       sceneContainerStyle={{ backgroundColor: '#030304' }}
       screenOptions={{
         tabBarActiveTintColor: Colors.background,
@@ -31,25 +30,17 @@ const Layout  = () => {
           borderTopWidth: 0,
         },
       }}>
-<Tabs.Screen
-  name="home"
-  options={{
-    title: 'Home',
-    headerTitleAlign: 'center',
-    headerTitleStyle: { color: '#fdfffc' },
-    tabBarIcon: ({ size, color }) => (
-      <FontAwesome name="registered" size={size} color="#ff9f1c" />
-    ),
-    headerTransparent: true,
-  }}
-/>
- <Tabs.Screen
-        name="invest"
+      <Tabs.Screen
+        name="home"
         options={{
-          title: 'Invest',
+          title: 'Home',
+          headerTitleAlign: 'center',
+          headerTitleStyle: { color: '#fdfffc' },
           tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="line-chart" size={size} color="#ff9f1c" />
+            <FontAwesome name="registered" size={size} color="#ff9f1c" />
           ),
+          tabBarLabelStyle: { color: '#ff9f1c' },
+          headerTransparent: true,
         }}
       />
       <Tabs.Screen
@@ -57,21 +48,24 @@ const Layout  = () => {
         options={{
           title: 'Transfers',
           tabBarIcon: ({ size, color }) => (
-            <FontAwesome name="exchange" size={size} color="#ff9f1c"  />
+            <FontAwesome name="exchange" size={size} color="#ff9f1c" />
           ),
+          tabBarLabelStyle: { color: '#ff9f1c' },
         }}
       />
-        </Tabs>
-      );
-    };
-    <Tabs.Screen
-    name="fa-btc"
-    options={{
-      title: 'Crypto',
-      tabBarIcon: ({ size, color }) => 
-      <FontAwesome name="th" size={size} color="#ff9f1c" />,
-      header: () => <CustomHeader />,
-      headerTransparent: true,
-    }}
-  />
+      <Tabs.Screen
+        name="crypto"
+        options={{
+          headerTitleStyle: { color: '#fdfffc' },
+          title: 'Crypto',
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ size, color }) => <FontAwesome name="bitcoin" size={size} color="#ff9f1c" />,
+          tabBarLabelStyle: { color: '#ff9f1c' },
+          headerTransparent: true,
+        }}
+      />
+    </Tabs>
+  );
+};
+
 export default Layout;

@@ -78,26 +78,36 @@ const Page = () => {
 
   return (
     <View style={[styles.container, {backgroundColor: Colors.background}]}>
+      <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10, marginTop: 50 }]}>
+          How about we begin?
+        </Text>
+        <Text style={defaultStyles.descriptionText}>
+          Please provide your phone number. We'll send a confirmation code to verify it.
+        </Text>
     <TextInput
         autoCapitalize="none"
-        placeholder="simon@galaxies.dev"
+        placeholder="Your Email address"
         value={emailAddress}
         onChangeText={setEmailAddress}
-style={styles.input}
+        style={[styles.input, { marginTop: 50 }]}
     />
     <TextInput
-        placeholder="password"
+        placeholder="Your password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
         style={[styles.input, {marginTop: 30}]}
     />
-
+ <Link href={'/login'} replace asChild>
+          <TouchableOpacity>
+            <Text style={[defaultStyles.textLink, {marginTop:20}]}>Have an existing account? Sign in.</Text>
+          </TouchableOpacity>
+        </Link>
 <TouchableOpacity 
 onPress={onSignUpPress}
 style={[
   defaultStyles.pillButton,
-  { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
+  { flexDirection: 'row', gap: 16, marginTop: 40, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
 ]}>
   <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue</Text>
 </TouchableOpacity>

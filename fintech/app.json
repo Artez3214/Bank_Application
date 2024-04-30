@@ -36,7 +36,11 @@
       [
         "expo-router",
         {
-          "origin": "https://galaxies.dev"
+          "origin": "https://example.com"
+        },
+        "expo-local-authentication",
+        {
+         "faceIDPermission": "This app uses Face ID to secure your data."
         }
       ]
     ],

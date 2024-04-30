@@ -36,6 +36,7 @@ const Page = () => {
   
     const verifyCode = async () => {
       try {
+        console.log('signUp', signUp);
         await signUp!.attemptPhoneNumberVerification({
           code,
         });
@@ -50,6 +51,7 @@ const Page = () => {
   
     const verifySignIn = async () => {
       try {
+        console.log('signIn', signIn);
         if (signIn) {
 
           await signIn.attemptFirstFactor({
@@ -84,7 +86,6 @@ const Page = () => {
         renderCell={({ index, symbol, isFocused }) => (
           <Fragment key={index}>
             <View
-              // Make sure that you pass onLayout={getCellOnLayoutHandler(index)} prop to root component of "Cell"
               onLayout={getCellOnLayoutHandler(index)}
               key={index}
               style={[styles.cellRoot, isFocused && styles.focusCell]}>

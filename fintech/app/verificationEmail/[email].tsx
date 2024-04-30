@@ -45,7 +45,6 @@ if (user && user.phoneNumbers.length > 0) {
           code,
         });
         router.push({ pathname: '/phoneNumberLogin'});
-        //await setActive!({ session: signUp!.createdSessionId });
       } catch (err) {
         console.log('error', JSON.stringify(err, null, 2));
         if (isClerkAPIResponseError(err)) {
@@ -56,11 +55,13 @@ if (user && user.phoneNumbers.length > 0) {
   
     const verifySignIn = async () => {
       try {
-        await signIn!.prepareSecondFactor({
-          strategy: "phone_code",
-        });
-       // await setActive!({ session: signIn!.createdSessionId });
-       router.push({ pathname: '/verificationPhone/[phone]', params: { phone: phoneNumber }});
+        if (signIn) {
+          await signIn.attemptFirstFactor({
+            strategy: 'email_code',
+            code,
+          });
+          await setActive!({ session: signIn.createdSessionId });
+        }
       } catch (err) {
         console.log('error', JSON.stringify(err, null, 2));
         if (isClerkAPIResponseError(err)) {

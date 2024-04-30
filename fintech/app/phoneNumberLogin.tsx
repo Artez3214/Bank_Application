@@ -1,7 +1,8 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
-import { SignedIn, useSignUp, useUser } from '@clerk/clerk-expo';
-import { clerk } from '@clerk/clerk-expo/dist/singleton';
+import { useSignIn } from '@clerk/clerk-expo';
+import { Ionicons } from '@expo/vector-icons';
+import { isLoaded } from 'expo-font';
 import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
@@ -9,48 +10,68 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  Pressable,
   Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
+
+enum SignInType {
+  Phone,
+  Email,
+  Google
+}
 
 const Page = () => {
   const [countryCode, setCountryCode] = useState('+370');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const keyboardVerticalOffset = Platform.OS === 'android' ? 70 : 0;
+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
   const router = useRouter();
-  const {signUp}  = useSignUp();
+  const { signIn } = useSignIn();
 
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const onSignup = async () => {
-    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+  const onSignInPress = async () => {
+    if (!isLoaded) {
+      return;
+    }
+    setLoading(true);
 
     try {
-      await signUp!.update({
-        phoneNumber: fullPhoneNumber,
+      const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+      console.log('fullPhoneNumber1', fullPhoneNumber);
+      const { supportedFirstFactors } = await signIn!.create({
+        identifier: fullPhoneNumber
       });
-      signUp!.preparePhoneNumberVerification();
 
-      router.push({ pathname: '/verificationPhone/[phone]', params: { phone: fullPhoneNumber } });
-    } catch (error) {
-      console.error('Error signing up:', error);
+      signIn?.validatePassword(password);
+
+      const firstPhoneFactor: any = supportedFirstFactors.find((factor: any) => {
+        return factor.strategy === 'phone_code';
+      });
+      const { phoneNumberId } = firstPhoneFactor;
+      await signIn!.prepareFirstFactor({
+        strategy: 'phone_code',
+        phoneNumberId,
+      });
+      router.push({
+        pathname: '/verificationPhone/[phone]',
+        params: { phone: fullPhoneNumber, signin: 'true' },
+      });
+
+    } catch (err: any) {
+      alert(err.errors[0].message);
+    } finally {
+      setLoading(false);
     }
   };
-
-
-
 
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
-      
+      behavior="padding"
       keyboardVerticalOffset={keyboardVerticalOffset}>
-      <View style={[defaultStyles.container, { backgroundColor: Colors.background }]}>
-        <Text style={[defaultStyles.header, { backgroundColor: '#030304', color: '#fdfffc', padding: 10, marginTop: 50 }]}>
-          How about we begin?
-        </Text>
-        <Text style={defaultStyles.descriptionText}>
-          Please provide your phone number. We'll send a confirmation  code to verify it .
-        </Text>
+      <View style={[styles.container, { backgroundColor: Colors.background }]}>
         <View style={styles.inputContainer}>
           <TextInput
             style={[styles.input, { backgroundColor: '#fdfffc', color: Colors.gray, flex: 0.2, marginRight: 10 }]}
@@ -66,16 +87,50 @@ const Page = () => {
             onChangeText={setPhoneNumber}
           />
         </View>
-        <View style={{ flex: 1 }} />
+        <TextInput
+          placeholder="password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+          style={[styles.input, { marginTop: 30 }]}
+        />
+
         <TouchableOpacity
+          onPress={onSignInPress}
           style={[
             defaultStyles.pillButton,
-            phoneNumber !== '' ? styles.enabled : styles.disabled,
-            { backgroundColor: Colors.green, marginTop: 0, width: '80%', alignSelf: 'center' } // Adjusted width and marginTop
-          ]}
-          onPress={onSignup}>
-          <Text style={[defaultStyles.buttonText, { marginTop: 0 }]}>Sign up</Text>
+            { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
+          ]}>
+          <Text style={[defaultStyles.buttonText, { color: '#fff' }]}>Continue</Text>
         </TouchableOpacity>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 20 }}>
+          <View style={{ flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: Colors.lightGray }}></View>
+          <Text style={{ color: Colors.gray, fontSize: 20 }}>or</Text>
+          <View style={{ flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: Colors.lightGray }}></View>
+        </View>
+        <TouchableOpacity
+          onPress={onSignInPress}
+          style={[
+            defaultStyles.pillButton,
+            { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }
+          ]}>
+          <Link href="/login">
+            <Ionicons name="mail" size={20} color={'#fff'} />
+            <Text style={[defaultStyles.buttonText, { color: '#fff', marginBottom: 60 }]}>  Continue with email</Text>
+          </Link>
+        </TouchableOpacity>
+
+        <Link href="/reset" asChild>
+          <Pressable style={styles.button}>
+            <Text style={[{ color: '#fdfffc' }]}>Forgot password?</Text>
+          </Pressable>
+        </Link>
+        <Link href="/signup" asChild>
+          <Pressable style={styles.button}>
+            <Text style={[{ color: '#fdfffc' }]}>Create Account</Text>
+          </Pressable>
+        </Link>
       </View>
     </KeyboardAvoidingView>
   );
@@ -90,12 +145,31 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 16,
     fontSize: 20,
+    backgroundColor: '#fdfffc',
   },
-  enabled: {
-    backgroundColor: Colors.primary,
+  cellText: {
+    color: '#000',
+    fontSize: 36,
+    textAlign: 'center',
   },
-  disabled: {
-    backgroundColor: Colors.primaryMuted,
+  focusCell: {
+    paddingBottom: 8,
+  },
+  separator: {
+    height: 2,
+    width: 10,
+    backgroundColor: Colors.gray,
+    alignSelf: 'center',
+  },
+  button: {
+    margin: 15,
+    marginTop: 20,
+    alignItems: 'center'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20
   },
 });
 
