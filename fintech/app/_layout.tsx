@@ -122,12 +122,12 @@ const RootLayoutNav = () => {
   return (
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
       <QueryClientProvider client={queryClient}>
-          <UserInactivityProvider>
+        <UserInactivityProvider>
           <GestureHandlerRootView style={{ flex: 1 }}>
             <StatusBar />
             <InitialLayout />
           </GestureHandlerRootView>
-          </UserInactivityProvider>
+        </UserInactivityProvider>
       </QueryClientProvider>
     </ClerkProvider>
   );

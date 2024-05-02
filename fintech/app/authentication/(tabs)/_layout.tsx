@@ -4,8 +4,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { BlurView } from 'expo-blur';
+import { useAuth } from '@clerk/clerk-expo';
 
 const Layout = () => {
+
   return (
     <Tabs
       sceneContainerStyle={{ backgroundColor: '#030304' }}
@@ -64,7 +66,19 @@ const Layout = () => {
           headerTransparent: true,
         }}
       />
+            <Tabs.Screen
+        name="user"
+        options={{
+          headerTitleStyle: { color: '#fdfffc' },
+          title: 'user',
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ size, color }) => <FontAwesome name="user" size={size} color="#ff9f1c" />,
+          tabBarLabelStyle: { color: '#ff9f1c' },
+          headerTransparent: true,
+        }}
+      />
     </Tabs>
+    
   );
 };
 

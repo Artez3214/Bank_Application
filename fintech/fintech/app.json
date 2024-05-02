@@ -22,8 +22,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.anonymous.fintech"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -31,19 +30,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      [
-        "expo-router",
-        {
-          "origin": "https://example.com"
-        }
-      ],
-      "expo-secure-store",
-      [
-        "expo-local-authentication",
-        {
-          "faceIDPermission": "Please authenticate"
-        }
-      ]
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true

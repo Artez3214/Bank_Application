@@ -25,7 +25,6 @@ const Page = () => {
       title: 'Added money',
     });
   };
-  /// ToDO:  add button drop  down
   return (
  
     <View style={[{backgroundColor: '#030304', marginTop: 90}]}>

@@ -30,7 +30,7 @@ const Page = () => {
       <Text style={defaultStyles.sectionHeader}>Latest Crypot</Text>
       <View style={defaultStyles.block}>
         {currencies.data?.map((currency: Currency) => (
-          <Link href={`/crypto/${currency.id}`} key={currency.id} asChild>
+
             <TouchableOpacity style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
               <Image source={{ uri: data?.[currency.id].logo }} style={{ width: 40, height: 40 }} />
               <View style={{ flex: 1, gap: 6 }}>
@@ -52,7 +52,7 @@ const Page = () => {
                 </View>
               </View>
             </TouchableOpacity>
-          </Link>
+       
         ))}
       </View>
     </ScrollView>

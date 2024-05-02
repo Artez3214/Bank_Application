@@ -17,7 +17,6 @@ import Animated, {
 
 const Page = () => {
   const { user } = useUser();
-  const [firstName, setFirstName] = useState(user?.firstName);
   const [code, setCode] = useState<number[]>([]);
   const codeLength = Array(6).fill(0);
   const router = useRouter();
@@ -35,8 +34,8 @@ const Page = () => {
 
   useEffect(() => {
     if (code.length === 6) {
-      if (code.join('') === '111111') {
-        router.replace('/(authenticated)/(tabs)/home');
+      if (code.join('') === '565856') {
+        router.replace('/authentication/(tabs)/home');
         setCode([]);
       } else {
         offset.value = withSequence(
@@ -63,15 +62,15 @@ const Page = () => {
   const onBiometricAuthPress = async () => {
     const { success } = await LocalAuthentication.authenticateAsync();
     if (success) {
-      router.replace('/(authenticated)/(tabs)/home');
+      router.replace('/authentication/(tabs)/home');
     } else {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     }
   };
 
   return (
-    <SafeAreaView>
-      <Text style={styles.greeting}>Welcome back, {firstName}</Text>
+    <SafeAreaView style={{backgroundColor: Colors.background}}>
+      <Text style={styles.greeting}>Welcome back</Text>
 
       <Animated.View style={[styles.codeView, style]}>
         {codeLength.map((_, index) => (
@@ -113,7 +112,7 @@ const Page = () => {
         <View
           style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <TouchableOpacity onPress={onBiometricAuthPress}>
-            <MaterialCommunityIcons name="face-recognition" size={26} color="black" />
+            <MaterialCommunityIcons name="face-recognition" size={26} color="#fdfffc" />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => onNumberPress(0)}>
@@ -124,7 +123,7 @@ const Page = () => {
             {code.length > 0 && (
               <TouchableOpacity onPress={numberBackspace}>
                 <Text style={styles.number}>
-                  <MaterialCommunityIcons name="backspace-outline" size={26} color="black" />
+                  <MaterialCommunityIcons name="backspace-outline" size={26} color="#fdfffc" />
                 </Text>
               </TouchableOpacity>
             )}
@@ -133,7 +132,7 @@ const Page = () => {
         <Text
           style={{
             alignSelf: 'center',
-            color: Colors.primary,
+            color: '#fdfffc',
             fontWeight: '500',
             fontSize: 18,
           }}>
@@ -150,6 +149,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 80,
     alignSelf: 'center',
+    color: '#fdfffc',
   },
   codeView: {
     flexDirection: 'row',
@@ -169,6 +169,16 @@ const styles = StyleSheet.create({
   },
   number: {
     fontSize: 32,
+    color: '#fdfffc',
+  },
+  iconButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333',
+    marginTop: 20,
   },
 });
 export default Page;
