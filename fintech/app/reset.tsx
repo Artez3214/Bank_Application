@@ -15,11 +15,13 @@ const Page = () => {
   
   const onRequestReset = async () => {
     try {
-      await signIn.create({
-        strategy: 'reset_password_email_code',
-        identifier: emailAddress,
-      });
-      setSuccessfulCreation(true);
+      if (signIn) {
+        await signIn.create({
+          strategy: 'reset_password_email_code',
+          identifier: emailAddress,
+        });
+        setSuccessfulCreation(true);
+      }
     } catch (err: any) {
       alert(err.errors[0].message);
     }
@@ -27,16 +29,17 @@ const Page = () => {
 
   const onReset = async () => {
     try {
-      const result = await signIn.attemptFirstFactor({
-        strategy: 'reset_password_email_code',
-        code,
-        password,
-      });
-      console.log(result);
-      alert('Password reset successfully');
+      if (signIn) {
+        const result = await signIn.attemptFirstFactor({
+          strategy: 'reset_password_email_code',
+          code,
+          password,
+        });
+        console.log(result);
+        alert('Password reset successfully');
 
-      // Set the user session active, which will log in the user automatically
-      await setActive({ session: result.createdSessionId });
+        await setActive({ session: result.createdSessionId });
+      }
     } catch (err: any) {
       alert(err.errors[0].message);
     }
