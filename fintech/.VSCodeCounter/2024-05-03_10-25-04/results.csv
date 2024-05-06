@@ -1,0 +1,69 @@
+"filename", "language", "TypeScript", "JSON with Comments", "JSON", "TypeScript JSX", "Properties", "JavaScript", "Gradle", "XML", "Batch", "comment", "blank", "total"
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\.env", "Properties", 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\build.gradle", "Gradle", 0, 0, 0, 0, 0, 0, 86, 0, 0, 67, 24, 177
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\debug\AndroidManifest.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 3, 8
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\AndroidManifest.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 0, 34
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\drawable\rn_edit_text_material.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 11, 0, 23, 3, 37
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\drawable\splashscreen.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values-night\colors.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values\colors.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 6
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values\strings.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 6
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values\styles.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 17
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\build.gradle", "Gradle", 0, 0, 0, 0, 0, 0, 32, 0, 0, 3, 6, 41
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\gradle.properties", "Properties", 0, 0, 0, 0, 11, 0, 0, 0, 0, 33, 13, 57
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\gradle\wrapper\gradle-wrapper.properties", "Properties", 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\gradlew.bat", "Batch", 0, 0, 0, 0, 0, 0, 0, 0, 41, 29, 22, 92
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\settings.gradle", "Gradle", 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 5, 19
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app.json", "JSON", 0, 0, 52, 0, 0, 0, 0, 0, 0, 0, 1, 53
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountDetail.tsx", "TypeScript JSX", 0, 0, 0, 109, 0, 0, 0, 0, 0, 6, 17, 132
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountTransactions.tsx", "TypeScript JSX", 0, 0, 0, 123, 0, 0, 0, 0, 0, 1, 9, 133
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\_layout.tsx", "TypeScript JSX", 0, 0, 0, 118, 0, 0, 0, 0, 0, 1, 18, 137
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\info+api.ts", "TypeScript", 195, 0, 0, 0, 0, 0, 0, 0, 0, 13, 3, 211
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\listings+api.ts", "TypeScript", 297, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 300
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\tickers+api.ts", "TypeScript", 442, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 446
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(modals)\lock.tsx", "TypeScript JSX", 0, 0, 0, 169, 0, 0, 0, 0, 0, 0, 15, 184
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\_layout.tsx", "TypeScript JSX", 0, 0, 0, 81, 0, 0, 0, 0, 0, 0, 5, 86
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\crypto.tsx", "TypeScript JSX", 0, 0, 0, 54, 0, 0, 0, 0, 0, 0, 7, 61
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\home.tsx", "TypeScript JSX", 0, 0, 0, 105, 0, 0, 0, 0, 0, 0, 13, 118
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\transfers.tsx", "TypeScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\user.tsx", "TypeScript JSX", 0, 0, 0, 156, 0, 0, 0, 0, 0, 8, 19, 183
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\crypto\[id].tsx", "TypeScript JSX", 0, 0, 0, 226, 0, 0, 0, 0, 0, 1, 11, 238
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\context\UserInactivity.tsx", "TypeScript JSX", 0, 0, 0, 37, 0, 0, 0, 0, 0, 0, 9, 46
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\help.tsx", "TypeScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\index.tsx", "TypeScript JSX", 0, 0, 0, 72, 0, 0, 0, 0, 0, 0, 5, 77
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\login.tsx", "TypeScript JSX", 0, 0, 0, 154, 0, 0, 0, 0, 0, 0, 15, 169
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Account.ts", "TypeScript", 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Chain.ts", "TypeScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 25
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Transaction.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\phoneNumberLogin.tsx", "TypeScript JSX", 0, 0, 0, 162, 0, 0, 0, 0, 0, 0, 15, 177
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\reset.tsx", "TypeScript JSX", 0, 0, 0, 134, 0, 0, 0, 0, 0, 0, 20, 154
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\services\TransactionServices.ts", "TypeScript", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 23
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\signup.tsx", "TypeScript JSX", 0, 0, 0, 120, 0, 0, 0, 0, 0, 5, 16, 141
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\verificationEmail\[email].tsx", "TypeScript JSX", 0, 0, 0, 136, 0, 0, 0, 0, 0, 1, 8, 145
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\verificationPhone\[phone].tsx", "TypeScript JSX", 0, 0, 0, 133, 0, 0, 0, 0, 0, 0, 8, 141
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\babel.config.js", "JavaScript", 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 8
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\Dropdown.tsx", "TypeScript JSX", 0, 0, 0, 46, 0, 0, 0, 0, 0, 0, 6, 52
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\EditScreenInfo.tsx", "TypeScript JSX", 0, 0, 0, 70, 0, 0, 0, 0, 0, 0, 8, 78
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\ExternalLink.tsx", "TypeScript JSX", 0, 0, 0, 21, 0, 0, 0, 0, 0, 3, 2, 26
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\RoundBtn.tsx", "TypeScript JSX", 0, 0, 0, 39, 0, 0, 0, 0, 0, 0, 2, 41
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\StyledText.tsx", "TypeScript JSX", 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 2, 6
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\Themed.tsx", "TypeScript JSX", 0, 0, 0, 31, 0, 0, 0, 0, 0, 4, 11, 46
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\__tests__\StyledText-test.js", "JavaScript", 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 4, 11
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useClientOnlyValue.ts", "TypeScript", 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useClientOnlyValue.web.ts", "TypeScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 13
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useColorScheme.ts", "TypeScript", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useColorScheme.web.ts", "TypeScript", 3, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 9
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\AccountUtils.ts", "TypeScript", 20, 0, 0, 0, 0, 0, 0, 0, 0, 3, 7, 30
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\TransactionUtils.ts", "TypeScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 5, 8, 32
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\constants\Colors.ts", "TypeScript", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\constants\Styles.ts", "TypeScript", 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 76
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\interfaces\crypto.ts", "TypeScript", 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 48
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\package-lock.json", "JSON", 0, 0, 24629, 0, 0, 0, 0, 0, 0, 0, 1, 24630
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\package.json", "JSON", 0, 0, 71, 0, 0, 0, 0, 0, 0, 0, 1, 72
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\store\balanceStore.ts", "TypeScript", 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 36
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\store\mmkv-storage.ts", "TypeScript", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 19
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\tsconfig.json", "JSON with Comments", 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 1, 18
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\web3\metamask.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"Total", "-", 1232, 17, 24752, 2318, 20, 14, 132, 93, 41, 215, 383, 29217

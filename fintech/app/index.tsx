@@ -43,7 +43,7 @@ const Page = () => {
           </TouchableOpacity>
         </Link>
         <Link
-          href={'/signup'}
+          href={'/signup'} 
           style={[defaultStyles.pillButton]}
           asChild
         >

@@ -1,0 +1,72 @@
+Date : 2024-05-03 10:25:04
+Directory : c:\Users\Eimantas\Desktop\New folder (4)\fintech
+Total : 27 files,  2691 codes, 25 comments, 102 blanks, all 2818 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          3 |      1,956 |          0 |          0 |      1,956 |
+| TypeScript JSX |         14 |        643 |          5 |         78 |        726 |
+| TypeScript     |         10 |         92 |         20 |         24 |        136 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                  |         27 |      2,691 |         25 |        102 |      2,818 |
+| . (Files)                                                                                          |          3 |      1,956 |          0 |          0 |      1,956 |
+| app                                                                                                |         19 |        714 |         17 |         87 |        818 |
+| app (Files)                                                                                        |          4 |        362 |          0 |         40 |        402 |
+| app\api                                                                                            |          1 |        -10 |         12 |         -2 |          0 |
+| app\authentication                                                                                 |          8 |        320 |          5 |         33 |        358 |
+| app\authentication\(modals)                                                                        |          1 |        169 |          0 |         15 |        184 |
+| app\authentication\(tabs)                                                                          |          6 |        -75 |          4 |          7 |        -64 |
+| app\authentication\(tabs) (Files)                                                                  |          5 |        151 |          5 |         18 |        174 |
+| app\authentication\(tabs)\cryptoCurrency                                                           |          1 |       -226 |         -1 |        -11 |       -238 |
+| app\authentication\crypto                                                                          |          1 |        226 |          1 |         11 |        238 |
+| app\context                                                                                        |          1 |         37 |          0 |          9 |         46 |
+| app\interfaces                                                                                     |          1 |        -45 |          0 |         -3 |        -48 |
+| app\models                                                                                         |          3 |         34 |          0 |          3 |         37 |
+| app\services                                                                                       |          1 |         16 |          0 |          7 |         23 |
+| components                                                                                         |          3 |        -37 |          8 |         11 |        -18 |
+| components (Files)                                                                                 |          1 |        -76 |          0 |         -4 |        -80 |
+| components\utils                                                                                   |          2 |         39 |          8 |         15 |         62 |
+| interfaces                                                                                         |          1 |         45 |          0 |          3 |         48 |
+| web3                                                                                               |          1 |         13 |          0 |          1 |         14 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                           | language       | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app.json                                          | JSON           |          5 |          0 |          0 |          5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountDetail.tsx                             | TypeScript JSX |        109 |          6 |         17 |        132 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountTransactions.tsx                       | TypeScript JSX |        123 |          1 |          9 |        133 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\_layout.tsx                                   | TypeScript JSX |          5 |         -7 |         -3 |         -5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\info+api.ts                               | TypeScript     |        -10 |         12 |         -2 |          0 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(modals)\lock.tsx              | TypeScript JSX |        169 |          0 |         15 |        184 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\_layout.tsx             | TypeScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\crypto.tsx              | TypeScript JSX |         -1 |         -2 |         -1 |         -4 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\cryptoCurrency\[id].tsx | TypeScript JSX |       -226 |         -1 |        -11 |       -238 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\home.tsx                | TypeScript JSX |          0 |         -1 |          0 |         -1 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\invest.tsx              | TypeScript JSX |         -9 |          0 |         -3 |        -12 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\user.tsx                | TypeScript JSX |        156 |          8 |         19 |        183 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\crypto\[id].tsx                | TypeScript JSX |        226 |          1 |         11 |        238 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\context\UserInactivity.tsx                    | TypeScript JSX |         37 |          0 |          9 |         46 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\interfaces\crypto.ts                          | TypeScript     |        -45 |          0 |         -3 |        -48 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Account.ts                             | TypeScript     |          5 |          0 |          0 |          5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Chain.ts                               | TypeScript     |         22 |          0 |          3 |         25 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Transaction.ts                         | TypeScript     |          7 |          0 |          0 |          7 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\reset.tsx                                     | TypeScript JSX |        125 |          0 |         17 |        142 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\services\TransactionServices.ts               | TypeScript     |         16 |          0 |          7 |         23 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\CustomHeader.tsx                       | TypeScript JSX |        -76 |          0 |         -4 |        -80 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\AccountUtils.ts                  | TypeScript     |         20 |          3 |          7 |         30 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\TransactionUtils.ts              | TypeScript     |         19 |          5 |          8 |         32 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\interfaces\crypto.ts                              | TypeScript     |         45 |          0 |          3 |         48 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\package-lock.json                                 | JSON           |      1,941 |          0 |          0 |      1,941 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\package.json                                      | JSON           |         10 |          0 |          0 |         10 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\web3\metamask.ts                                  | TypeScript     |         13 |          0 |          1 |         14 |
+| Total                                                                                              |                |      2,691 |         25 |        102 |      2,818 |
++----------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

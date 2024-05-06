@@ -41,10 +41,12 @@ if (user && user.phoneNumbers.length > 0) {
 
     const verifyCode = async () => {
       try {
+  
         await signUp!.attemptEmailAddressVerification({
           code,
         });
-        router.push({ pathname: '/phoneNumberLogin'});
+      
+        router.push({ pathname: '/phoneNumberRegistration' });
       } catch (err) {
         console.log('error', JSON.stringify(err, null, 2));
         if (isClerkAPIResponseError(err)) {

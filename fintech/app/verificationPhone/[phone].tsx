@@ -1,7 +1,7 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { isClerkAPIResponseError, useSignIn, useSignUp } from '@clerk/clerk-expo';
-import { Link, useLocalSearchParams } from 'expo-router';
+import { Link, router, useLocalSearchParams } from 'expo-router';
 import { Fragment, useEffect, useState } from 'react';
 import { Alert, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import {
@@ -41,6 +41,7 @@ const Page = () => {
           code,
         });
         await setActive!({ session: signUp!.createdSessionId });
+        router.push({ pathname: '/authentication/home'});
       } catch (err) {
         console.log('error', JSON.stringify(err, null, 2));
         if (isClerkAPIResponseError(err)) {

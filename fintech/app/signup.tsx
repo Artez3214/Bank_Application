@@ -23,7 +23,7 @@ const Page = () => {
   const { isLoaded, signUp, setActive } = useSignUp();
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
-  const [pendingVerification, setPendingVerification] = useState(false);
+
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -34,17 +34,16 @@ const Page = () => {
     setLoading(true);
 
     try {
-      // Create the user on Clerk
+
       await signUp.create({
         emailAddress,
         password,
       });
-
-      // Send verification Email
-      await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
+    
+       signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
+     // console.log('User created');
+      
       router.push({ pathname: '/verificationEmail/[email]', params: { email: emailAddress } });
-      // change the UI to verify the email address
-      setPendingVerification(true);
     } catch (err: any) {
       alert(err.errors[0].message);
     }finally {

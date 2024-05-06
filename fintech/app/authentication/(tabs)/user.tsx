@@ -7,7 +7,7 @@ import { Text, View, StyleSheet, TouchableOpacity, TextInput, Button } from 'rea
 import "@ethersproject/shims"
 import { set } from 'date-fns';
 import { ethers } from 'ethers';
-
+import { goerli } from '@/app/models/Chain';
 const provider = ethers.getDefaultProvider();
 const Page = () => {
   const {signOut} = useAuth();
@@ -16,7 +16,8 @@ const Page = () => {
   const [seedInput, setSeedInput] = useState('');
   const [keys, setKeys] = useState(null);
   const [showKeys, setShowKeys] = useState(false);
-
+  const [balance, setBalance] = useState(null);
+  const [showSeedInput, setShowSeedInput] = useState(false);
   const onLogoutPress = () => {
     signOut();
   };
@@ -25,17 +26,14 @@ const Page = () => {
     const keys = generateKeys();
     setKeys(keys);
     setShowKeys(true);
-    getBalance();
     console.log({keys});
   };
-  const getBalance = async () => {
-    try {
-      const balanceWei = await provider.getBalance(keys._j.address);
-      const balanceEth = ethers.utils.formatEther(balanceWei);
-      console.log(`Balance: ${balanceEth} ETH`);
-    } catch (error) {
-      console.error('Failed to get balance:', error);
-    }
+  const fetchBalance = async () => {
+    console.log(keys._j.seedPhrase);
+    const provider = new ethers.providers.JsonRpcProvider(goerli.rpcUrl);
+   // console.log({provider});
+    const balance = await provider.getBalance(keys._j.address);
+    setBalance(ethers.utils.formatEther(balance));
   };
   const onRecoverAccountPress = () => {
     if (!showRecoverInput) {
@@ -44,6 +42,7 @@ const Page = () => {
       const keys = generateKeys(seedPhrase);
       setKeys(keys);
       console.log({keys});
+      setShowRecoverInput(false);
     }
   };
 
@@ -84,22 +83,32 @@ const Page = () => {
         <Text style={styles.text}>
           {keys && keys._j.address}
         </Text>
+        <Button title="Fetch Balance" onPress={fetchBalance} />
+        <Text style={styles.text}>ddddddddd {balance}</Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={onCreateWalletPress}>
         <Text style={styles.buttonText}>Create Wallet Account</Text>
       </TouchableOpacity>
-      {showRecoverInput && (
-        <TextInput
+
+
+      {!showRecoverInput && (
+      <TouchableOpacity style={[styles.button, { marginTop: 20 }]} onPress={onRecoverAccountPress}>
+        <Text style={styles.buttonText}>Recover  Wallet Account</Text>
+      </TouchableOpacity>
+
+  )}
+        {showRecoverInput && (
+
+        <><TextInput
           style={styles.input}
           onChangeText={setSeedPhrase}
           value={seedPhrase}
           placeholder="Enter seed phrase or private key"
-          onSubmitEditing={onRecoverAccountPress}
-        />
-      )}
-      <TouchableOpacity style={[styles.button, { marginTop: 20 }]} onPress={onRecoverAccountPress}>
-        <Text style={styles.buttonText}>Recover  Wallet Account</Text>
-      </TouchableOpacity>
+          onSubmitEditing={onRecoverAccountPress} /><TouchableOpacity style={[styles.button, { marginTop: 20 }]} onPress={onRecoverAccountPress}>
+            <Text style={styles.buttonText}>Continue</Text>
+          </TouchableOpacity></>
+
+  )}
       {
         seedInput && (
           <View>

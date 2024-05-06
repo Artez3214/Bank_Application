@@ -1,0 +1,29 @@
+"filename", "language", "TypeScript", "JSON", "TypeScript JSX", "comment", "blank", "total"
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app.json", "JSON", 0, 5, 0, 0, 0, 5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountDetail.tsx", "TypeScript JSX", 0, 0, 109, 6, 17, 132
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountTransactions.tsx", "TypeScript JSX", 0, 0, 123, 1, 9, 133
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\_layout.tsx", "TypeScript JSX", 0, 0, 5, -7, -3, -5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\info+api.ts", "TypeScript", -10, 0, 0, 12, -2, 0
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(modals)\lock.tsx", "TypeScript JSX", 0, 0, 169, 0, 15, 184
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\_layout.tsx", "TypeScript JSX", 0, 0, 5, 0, 3, 8
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\crypto.tsx", "TypeScript JSX", 0, 0, -1, -2, -1, -4
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\cryptoCurrency\[id].tsx", "TypeScript JSX", 0, 0, -226, -1, -11, -238
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\home.tsx", "TypeScript JSX", 0, 0, 0, -1, 0, -1
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\invest.tsx", "TypeScript JSX", 0, 0, -9, 0, -3, -12
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\user.tsx", "TypeScript JSX", 0, 0, 156, 8, 19, 183
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\crypto\[id].tsx", "TypeScript JSX", 0, 0, 226, 1, 11, 238
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\context\UserInactivity.tsx", "TypeScript JSX", 0, 0, 37, 0, 9, 46
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\interfaces\crypto.ts", "TypeScript", -45, 0, 0, 0, -3, -48
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Account.ts", "TypeScript", 5, 0, 0, 0, 0, 5
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Chain.ts", "TypeScript", 22, 0, 0, 0, 3, 25
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Transaction.ts", "TypeScript", 7, 0, 0, 0, 0, 7
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\reset.tsx", "TypeScript JSX", 0, 0, 125, 0, 17, 142
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\services\TransactionServices.ts", "TypeScript", 16, 0, 0, 0, 7, 23
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\CustomHeader.tsx", "TypeScript JSX", 0, 0, -76, 0, -4, -80
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\AccountUtils.ts", "TypeScript", 20, 0, 0, 3, 7, 30
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\TransactionUtils.ts", "TypeScript", 19, 0, 0, 5, 8, 32
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\interfaces\crypto.ts", "TypeScript", 45, 0, 0, 0, 3, 48
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\package-lock.json", "JSON", 0, 1941, 0, 0, 0, 1941
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\package.json", "JSON", 0, 10, 0, 0, 0, 10
+"c:\Users\Eimantas\Desktop\New folder (4)\fintech\web3\metamask.ts", "TypeScript", 13, 0, 0, 0, 1, 14
+"Total", "-", 92, 1956, 643, 25, 102, 2818

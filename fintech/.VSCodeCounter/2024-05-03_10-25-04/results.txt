@@ -1,0 +1,135 @@
+Date : 2024-05-03 10:25:04
+Directory : c:\Users\Eimantas\Desktop\New folder (4)\fintech
+Total : 67 files,  28619 codes, 215 comments, 383 blanks, all 29217 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          3 |     24,752 |          0 |          3 |     24,755 |
+| TypeScript JSX     |         25 |      2,318 |         30 |        247 |      2,595 |
+| TypeScript         |         19 |      1,232 |         30 |         50 |      1,312 |
+| Gradle             |          3 |        132 |         70 |         35 |        237 |
+| XML                |         10 |         93 |         23 |          6 |        122 |
+| Batch              |          1 |         41 |         29 |         22 |         92 |
+| Properties         |          3 |         20 |         33 |         14 |         67 |
+| JSON with Comments |          1 |         17 |          0 |          1 |         18 |
+| JavaScript         |          2 |         14 |          0 |          5 |         19 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                              | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                 |         67 |     28,619 |        215 |        383 |     29,217 |
+| . (Files)                                                                                                         |          6 |     24,778 |          0 |          5 |     24,783 |
+| android                                                                                                           |         16 |        284 |        155 |         77 |        516 |
+| android (Files)                                                                                                   |          4 |         98 |         65 |         46 |        209 |
+| android\app                                                                                                       |         11 |        179 |         90 |         30 |        299 |
+| android\app (Files)                                                                                               |          1 |         86 |         67 |         24 |        177 |
+| android\app\src                                                                                                   |         10 |         93 |         23 |          6 |        122 |
+| android\app\src\debug                                                                                             |          1 |          5 |          0 |          3 |          8 |
+| android\app\src\main                                                                                              |          9 |         88 |         23 |          3 |        114 |
+| android\app\src\main (Files)                                                                                      |          1 |         34 |          0 |          0 |         34 |
+| android\app\src\main\res                                                                                          |          8 |         54 |         23 |          3 |         80 |
+| android\app\src\main\res\drawable                                                                                 |          2 |         14 |         23 |          3 |         40 |
+| android\app\src\main\res\mipmap-anydpi-v26                                                                        |          2 |         10 |          0 |          0 |         10 |
+| android\app\src\main\res\values                                                                                   |          3 |         29 |          0 |          0 |         29 |
+| android\app\src\main\res\values-night                                                                             |          1 |          1 |          0 |          0 |          1 |
+| android\gradle                                                                                                    |          1 |          7 |          0 |          1 |          8 |
+| android\gradle\wrapper                                                                                            |          1 |          7 |          0 |          1 |          8 |
+| app                                                                                                               |         26 |      3,091 |         37 |        235 |      3,363 |
+| app (Files)                                                                                                       |          9 |      1,001 |         13 |        118 |      1,132 |
+| app\api                                                                                                           |          3 |        934 |         14 |          9 |        957 |
+| app\authentication                                                                                                |          7 |        800 |          9 |         73 |        882 |
+| app\authentication\(modals)                                                                                       |          1 |        169 |          0 |         15 |        184 |
+| app\authentication\(tabs)                                                                                         |          5 |        405 |          8 |         47 |        460 |
+| app\authentication\crypto                                                                                         |          1 |        226 |          1 |         11 |        238 |
+| app\context                                                                                                       |          1 |         37 |          0 |          9 |         46 |
+| app\models                                                                                                        |          3 |         34 |          0 |          3 |         37 |
+| app\services                                                                                                      |          1 |         16 |          0 |          7 |         23 |
+| app\verificationEmail                                                                                             |          1 |        136 |          1 |          8 |        145 |
+| app\verificationPhone                                                                                             |          1 |        133 |          0 |          8 |        141 |
+| components                                                                                                        |         13 |        272 |         23 |         56 |        351 |
+| components (Files)                                                                                                |         10 |        226 |         15 |         37 |        278 |
+| components\__tests__                                                                                              |          1 |          7 |          0 |          4 |         11 |
+| components\utils                                                                                                  |          2 |         39 |          8 |         15 |         62 |
+| constants                                                                                                         |          2 |         86 |          0 |          1 |         87 |
+| interfaces                                                                                                        |          1 |         45 |          0 |          3 |         48 |
+| store                                                                                                             |          2 |         50 |          0 |          5 |         55 |
+| web3                                                                                                              |          1 |         13 |          0 |          1 |         14 |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                          | language           | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\.env                                                             | Properties         |          2 |          0 |          0 |          2 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\build.gradle                                         | Gradle             |         86 |         67 |         24 |        177 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\debug\AndroidManifest.xml                        | XML                |          5 |          0 |          3 |          8 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\AndroidManifest.xml                         | XML                |         34 |          0 |          0 |         34 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\drawable\rn_edit_text_material.xml      | XML                |         11 |         23 |          3 |         37 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\drawable\splashscreen.xml               | XML                |          3 |          0 |          0 |          3 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml       | XML                |          5 |          0 |          0 |          5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml | XML                |          5 |          0 |          0 |          5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values-night\colors.xml                 | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values\colors.xml                       | XML                |          6 |          0 |          0 |          6 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values\strings.xml                      | XML                |          6 |          0 |          0 |          6 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\app\src\main\res\values\styles.xml                       | XML                |         17 |          0 |          0 |         17 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\build.gradle                                             | Gradle             |         32 |          3 |          6 |         41 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\gradle.properties                                        | Properties         |         11 |         33 |         13 |         57 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\gradle\wrapper\gradle-wrapper.properties                 | Properties         |          7 |          0 |          1 |          8 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\gradlew.bat                                              | Batch              |         41 |         29 |         22 |         92 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\android\settings.gradle                                          | Gradle             |         14 |          0 |          5 |         19 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app.json                                                         | JSON               |         52 |          0 |          1 |         53 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountDetail.tsx                                            | TypeScript JSX     |        109 |          6 |         17 |        132 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\AccountTransactions.tsx                                      | TypeScript JSX     |        123 |          1 |          9 |        133 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\_layout.tsx                                                  | TypeScript JSX     |        118 |          1 |         18 |        137 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\info+api.ts                                              | TypeScript         |        195 |         13 |          3 |        211 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\listings+api.ts                                          | TypeScript         |        297 |          0 |          3 |        300 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\api\tickers+api.ts                                           | TypeScript         |        442 |          1 |          3 |        446 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(modals)\lock.tsx                             | TypeScript JSX     |        169 |          0 |         15 |        184 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\_layout.tsx                            | TypeScript JSX     |         81 |          0 |          5 |         86 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\crypto.tsx                             | TypeScript JSX     |         54 |          0 |          7 |         61 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\home.tsx                               | TypeScript JSX     |        105 |          0 |         13 |        118 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\transfers.tsx                          | TypeScript JSX     |          9 |          0 |          3 |         12 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\(tabs)\user.tsx                               | TypeScript JSX     |        156 |          8 |         19 |        183 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\authentication\crypto\[id].tsx                               | TypeScript JSX     |        226 |          1 |         11 |        238 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\context\UserInactivity.tsx                                   | TypeScript JSX     |         37 |          0 |          9 |         46 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\help.tsx                                                     | TypeScript JSX     |          9 |          0 |          3 |         12 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\index.tsx                                                    | TypeScript JSX     |         72 |          0 |          5 |         77 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\login.tsx                                                    | TypeScript JSX     |        154 |          0 |         15 |        169 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Account.ts                                            | TypeScript         |          5 |          0 |          0 |          5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Chain.ts                                              | TypeScript         |         22 |          0 |          3 |         25 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\models\Transaction.ts                                        | TypeScript         |          7 |          0 |          0 |          7 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\phoneNumberLogin.tsx                                         | TypeScript JSX     |        162 |          0 |         15 |        177 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\reset.tsx                                                    | TypeScript JSX     |        134 |          0 |         20 |        154 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\services\TransactionServices.ts                              | TypeScript         |         16 |          0 |          7 |         23 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\signup.tsx                                                   | TypeScript JSX     |        120 |          5 |         16 |        141 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\verificationEmail\[email].tsx                                | TypeScript JSX     |        136 |          1 |          8 |        145 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\app\verificationPhone\[phone].tsx                                | TypeScript JSX     |        133 |          0 |          8 |        141 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\babel.config.js                                                  | JavaScript         |          7 |          0 |          1 |          8 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\Dropdown.tsx                                          | TypeScript JSX     |         46 |          0 |          6 |         52 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\EditScreenInfo.tsx                                    | TypeScript JSX     |         70 |          0 |          8 |         78 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\ExternalLink.tsx                                      | TypeScript JSX     |         21 |          3 |          2 |         26 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\RoundBtn.tsx                                          | TypeScript JSX     |         39 |          0 |          2 |         41 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\StyledText.tsx                                        | TypeScript JSX     |          4 |          0 |          2 |          6 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\Themed.tsx                                            | TypeScript JSX     |         31 |          4 |         11 |         46 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\__tests__\StyledText-test.js                          | JavaScript         |          7 |          0 |          4 |         11 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useClientOnlyValue.ts                                 | TypeScript         |          3 |          1 |          1 |          5 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useClientOnlyValue.web.ts                             | TypeScript         |          8 |          2 |          3 |         13 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useColorScheme.ts                                     | TypeScript         |          1 |          0 |          1 |          2 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\useColorScheme.web.ts                                 | TypeScript         |          3 |          5 |          1 |          9 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\AccountUtils.ts                                 | TypeScript         |         20 |          3 |          7 |         30 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\components\utils\TransactionUtils.ts                             | TypeScript         |         19 |          5 |          8 |         32 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\constants\Colors.ts                                              | TypeScript         |         11 |          0 |          0 |         11 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\constants\Styles.ts                                              | TypeScript         |         75 |          0 |          1 |         76 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\interfaces\crypto.ts                                             | TypeScript         |         45 |          0 |          3 |         48 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\package-lock.json                                                | JSON               |     24,629 |          0 |          1 |     24,630 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\package.json                                                     | JSON               |         71 |          0 |          1 |         72 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\store\balanceStore.ts                                            | TypeScript         |         33 |          0 |          3 |         36 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\store\mmkv-storage.ts                                            | TypeScript         |         17 |          0 |          2 |         19 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\tsconfig.json                                                    | JSON with Comments |         17 |          0 |          1 |         18 |
+| c:\Users\Eimantas\Desktop\New folder (4)\fintech\web3\metamask.ts                                                 | TypeScript         |         13 |          0 |          1 |         14 |
+| Total                                                                                                             |                    |     28,619 |        215 |        383 |     29,217 |
++-------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
