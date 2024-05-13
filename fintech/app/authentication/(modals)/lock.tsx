@@ -61,6 +61,7 @@ const Page = () => {
 
   const onBiometricAuthPress = async () => {
     const { success } = await LocalAuthentication.authenticateAsync();
+    console.log({ success });
     if (success) {
       router.replace('/authentication/(tabs)/home');
     } else {
@@ -111,7 +112,7 @@ const Page = () => {
         </View>
         <View
           style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <TouchableOpacity onPress={onBiometricAuthPress}>
+          <TouchableOpacity onPress={onBiometricAuthPress} testID="biometricButton">
             <MaterialCommunityIcons name="face-recognition" size={26} color="#fdfffc" />
           </TouchableOpacity>
 

@@ -31,7 +31,7 @@ const Page = () => {
       <View style={defaultStyles.block}>
         {currencies.data?.map((currency: Currency) => (
 
-            <TouchableOpacity style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
+            <TouchableOpacity  key={currency.id} style={{ flexDirection: 'row', gap: 14, alignItems: 'center' }}>
               <Image source={{ uri: data?.[currency.id].logo }} style={{ width: 40, height: 40 }} />
               <View style={{ flex: 1, gap: 6 }}>
                 <Text style={{ fontWeight: '600', color: Colors.dark }}>{currency.name}</Text>

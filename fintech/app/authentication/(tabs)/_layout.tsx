@@ -5,9 +5,9 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 import { BlurView } from 'expo-blur';
 import { useAuth } from '@clerk/clerk-expo';
-
+import {LogBox} from 'react-native';
 const Layout = () => {
-
+  //LogBox.ignoreAllLogs();
   return (
     <Tabs
       sceneContainerStyle={{ backgroundColor: '#030304' }}
@@ -36,6 +36,7 @@ const Layout = () => {
         name="home"
         options={{
           title: 'Home',
+          tabBarTestID: 'home',
           headerTitleAlign: 'center',
           headerTitleStyle: { color: '#fdfffc' },
           tabBarIcon: ({ size, color }) => (
@@ -49,6 +50,9 @@ const Layout = () => {
         name="transfers"
         options={{
           title: 'Transfers',
+          headerTitleAlign: 'center',
+          headerTransparent: true,
+          headerTitleStyle: { color: '#fdfffc' },
           tabBarIcon: ({ size, color }) => (
             <FontAwesome name="exchange" size={size} color="#ff9f1c" />
           ),

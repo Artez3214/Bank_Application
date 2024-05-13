@@ -9,7 +9,7 @@ const Page = () => {
   const [assets] = useAssets([require('@/assets/videos/intro/chips.mp4')]);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID='video'>
       {assets && (
         <Video
           isMuted
@@ -47,7 +47,7 @@ const Page = () => {
           style={[defaultStyles.pillButton]}
           asChild
         >
-          <TouchableOpacity>
+          <TouchableOpacity testID="SignUpButton">
             <Text style={{ color: 'white', fontSize: 22, fontWeight: '500' }}>Sign Up</Text>
           </TouchableOpacity>
         </Link>

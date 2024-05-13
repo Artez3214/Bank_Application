@@ -37,9 +37,9 @@ const Page = () => {
         identifier: emailAddress
       });
 
-      console.log('supportedFirstFactors1', supportedFirstFactors);
+   
       signIn?.validatePassword(password);
-      console.log('supportedFirstFactors123', supportedFirstFactors);
+  
       const emailAddressFactor: any = supportedFirstFactors.find((factor: any) => {
         return factor.strategy === 'email_code';
       });
@@ -102,7 +102,6 @@ console.log('supportedFirstFactors12345', emailAddressId);
       </View>
 
       <TouchableOpacity
-        onPress={onSignInPress}
         style={[
           defaultStyles.pillButton,
           { flexDirection: 'row', gap: 16, marginTop: 20, backgroundColor: Colors.green, alignSelf: 'center', width: '80%' }

@@ -8,6 +8,13 @@ import { ClerkProvider, useAuth } from "@clerk/clerk-expo"
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 import * as SecureStore from 'expo-secure-store';
 import { StatusBar, Text, TouchableOpacity } from 'react-native';
+import { useColorScheme } from '@/components/useColorScheme';
+import Colors from '@/constants/Colors';
+import { Ionicons } from '@expo/vector-icons';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { UserInactivityProvider } from './context/UserInactivity';
+
 const queryClient = new QueryClient();
 // Cache the Clerk JWT
 const tokenCache = {
@@ -28,13 +35,6 @@ const tokenCache = {
 };
 
 
-
-import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
-import { Ionicons } from '@expo/vector-icons';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { UserInactivityProvider } from './context/UserInactivity';
 
 export {
   ErrorBoundary,
